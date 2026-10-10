@@ -1,0 +1,19 @@
+{
+  "name": "applywise",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "extension",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,extension -c green,blue \"npm run dev --workspace server\" \"npm run dev --workspace extension\"",
+    "build": "npm run build --workspace extension",
+    "test": "npm test --workspace server",
+    "check": "npm test && npm run build",
+    "start": "npm run start --workspace server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
